@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-base: 242 246 250;
+  --color-panel: 255 255 255;
+  --color-panel-alt: 246 249 252;
+  --color-accent: 8 145 178;
+  --color-muted: 94 110 129;
+  --color-border: 220 229 239;
+  --color-success: 22 163 74;
+  --color-warning: 217 119 6;
+  --color-danger: 220 38 38;
+  --color-text: 12 18 31;
+  --color-text-soft: 78 92 110;
+  --page-gradient: radial-gradient(circle at 0% 0%, rgba(8, 145, 178, 0.12), transparent 26%), radial-gradient(circle at 100% 0%, rgba(245, 158, 11, 0.1), transparent 18%), radial-gradient(circle at 50% 100%, rgba(14, 165, 233, 0.08), transparent 24%), linear-gradient(180deg, #fdfefe 0%, #edf3f8 100%);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-base: 7 10 15;
+  --color-panel: 14 18 26;
+  --color-panel-alt: 20 25 35;
+  --color-accent: 14 165 233;
+  --color-muted: 148 163 184;
+  --color-border: 33 42 58;
+  --color-success: 34 197 94;
+  --color-warning: 245 158 11;
+  --color-danger: 239 68 68;
+  --color-text: 241 245 249;
+  --color-text-soft: 203 213 225;
+  --page-gradient: radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.16), transparent 34%), radial-gradient(circle at 0% 100%, rgba(15, 118, 110, 0.1), transparent 24%), linear-gradient(180deg, #06080d 0%, #0c1118 100%);
+}
+
+body {
+  margin: 0;
+  font-family: "Aptos", "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  background: rgb(var(--color-base));
+  color: rgb(var(--color-text));
+  background-attachment: fixed;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.input-field {
+  @apply w-full rounded-2xl border border-border bg-panelAlt px-4 py-3 text-sm text-[rgb(var(--color-text))] outline-none transition placeholder:text-[rgb(var(--color-muted))] focus:border-accent;
+}
+
+.surface-card {
+  @apply rounded-[30px] border border-border bg-panel shadow-panel;
+}
+
+.surface-card-soft {
+  @apply rounded-[26px] border border-border bg-panelAlt/90 shadow-panel;
+}
+
+.glass-band {
+  background:
+    linear-gradient(180deg, rgba(var(--color-panel), 0.9) 0%, rgba(var(--color-panel), 0.74) 100%),
+    linear-gradient(90deg, rgba(var(--color-accent), 0.08) 0%, transparent 35%, transparent 65%, rgba(var(--color-accent), 0.08) 100%);
+  backdrop-filter: blur(22px);
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(var(--color-border), 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--color-border), 0.35) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.public-shell {
+  background-image:
+    radial-gradient(circle at top right, rgba(var(--color-accent), 0.1), transparent 24%),
+    radial-gradient(circle at bottom left, rgba(var(--color-accent), 0.07), transparent 22%),
+    var(--page-gradient);
+}
+
+.section-shell {
+  @apply surface-card relative overflow-hidden;
+}
+
+.section-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(var(--color-accent), 0.12), transparent 28%),
+    linear-gradient(180deg, rgba(var(--color-panel-alt), 0.18) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.section-shell > * {
+  position: relative;
+  z-index: 1;
+}
+
+.metric-tile {
+  @apply rounded-[24px] border border-border bg-panelAlt/90 p-5;
+}
+
+.metric-kicker {
+  @apply text-[11px] font-semibold uppercase tracking-[0.24em] text-accent;
+}
+
+.display-title {
+  font-size: clamp(2.75rem, 6vw, 5.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+
+.subtle-grid {
+  background-image:
+    linear-gradient(rgba(var(--color-border), 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--color-border), 0.22) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.halo-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.halo-card::after {
+  content: "";
+  position: absolute;
+  right: -10%;
+  top: -12%;
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(var(--color-accent), 0.18), transparent 68%);
+  pointer-events: none;
+}
+
+.pill-link {
+  @apply rounded-full px-4 py-2 text-sm font-medium text-[rgb(var(--color-text-soft))] transition hover:bg-panelAlt hover:text-[rgb(var(--color-text))];
+}
+
+.button-primary {
+  @apply inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition hover:opacity-95;
+}
+
+.button-secondary {
+  @apply inline-flex items-center justify-center rounded-full border border-border bg-panelAlt px-6 py-3 text-sm font-medium text-[rgb(var(--color-text))] transition hover:border-accent;
+}
